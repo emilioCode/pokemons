@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js'
+import img from './assets/logo-pokemon.png';
+import NavBar from './components/NavBar';
 
 function App() {
+  const app = {
+    title: "Pokemon",
+    with: "15%",
+    bgcolor: "#ed514d",
+    routes: [
+      { name: "Pokemons", path: "/pokemons", component: null },
+      { name: "About", path: "/about", component: null }
+    ]
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <NavBar img={img} name={app.title} width={app.with} routes={app.routes} bgcolor={app.bgcolor}/>
+    
+    </>
   );
 }
 
