@@ -9,6 +9,7 @@ import img from './assets/logo-pokemon.png';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import About from './pages/About';
+import NotFound from './pages/404';
 
 function App() {
   const app = {
@@ -26,12 +27,13 @@ function App() {
       <NavBar img={img} name={app.title} width={app.with} routes={app.routes} bgcolor={app.bgcolor}/>
     
       <Routes>
-        <Route path='/' element={<Home img={img} alt={app.title} width={"50%"}/>}/>
+        <Route exact path='/' element={<Home img={img} alt={app.title} width={"50%"}/>}/>
         {
           app.routes.map((a, index)=>{
-            return <Route path={a.path} element={a.component} key={index}/>
+            return <Route  path={a.path} element={a.component} key={index}/>
           })
         }
+        <Route path="*" element={<NotFound />}/>
       </Routes>
     </Router>
     </>
