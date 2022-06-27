@@ -10,6 +10,7 @@ import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import About from './pages/About';
 import NotFound from './pages/404';
+import Gallery from './pages/Gallery';
 
 function App() {
   const app = {
@@ -17,7 +18,7 @@ function App() {
     with: "15%",
     bgcolor: "#ed514d",
     routes: [
-      { name: "Pokemons", path: "/pokemons", component: null },
+      { name: "Pokemons", path: "/pokemons", component: <Gallery /> },
       { name: "About", path: "/about", component: <About /> }
     ]
   }
