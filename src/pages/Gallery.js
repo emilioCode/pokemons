@@ -15,29 +15,6 @@ export default function Gallery() {
 
   useEffect(() => {
     const getPokemons = () => {
-      //   axios.get(apiPath).then((response) => {
-      //     let array = response.data.results;
-      //     let arrayFtm = {};
-      //     array.forEach((element) => {
-      //       axios
-      //         .get(element.url)
-      //         .then((res) => {
-      //           arrayFtm = {
-      //             name: element.name,
-      //             data: res.data,
-      //           };
-      //         })
-      //         .finally((_) => {
-      //           let scope = pokemons;
-      //           scope.push(arrayFtm);
-
-      //           setPokemons(scope);
-      //           console.log(pokemons);
-
-      //         });
-      //     });
-      //   });
-
       axios.get(apiPath).then((resp) => {
         // debugger;
         setNext(resp.data.next);
