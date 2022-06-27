@@ -16,7 +16,6 @@ export default function Gallery() {
   useEffect(() => {
     const getPokemons = () => {
       axios.get(apiPath).then((resp) => {
-        // debugger;
         setNext(resp.data.next);
         for (let i = 0; i < resp.data.results.length; i++) {
           axios.get(resp.data.results[i].url).then((result) => {
@@ -44,7 +43,7 @@ export default function Gallery() {
       <br />
       <div className="text-center">
         <span className="btn-link" onClick={getMore}>
-          Cargar mas
+          More...
         </span>
       </div>
       <br />
