@@ -33,7 +33,6 @@ export default function Gallery() {
       <div className="row">
         {pokemons.map((pkm, index) => (
           <Card
-            col={3}
             title={"No." + pkm.id + " - " + pkm.name}
             image={pkm.sprites.front_default}
             key={index}
