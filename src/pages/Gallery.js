@@ -2,7 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Card from "../components/Card";
 
-export default function Gallery() {
+export default function Gallery(props) {
+  const { loading, setLoading } = props;
   const [pokemons, setPokemons] = useState([]);
   const [apiPath, setApiPath] = useState(
     "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
@@ -15,14 +16,22 @@ export default function Gallery() {
 
   useEffect(() => {
     const getPokemons = () => {
-      axios.get(apiPath).then((resp) => {
-        setNext(resp.data.next);
-        for (let i = 0; i < resp.data.results.length; i++) {
-          axios.get(resp.data.results[i].url).then((result) => {
-            setPokemons((prevArray) => [...prevArray, result.data]);
-          });
-        }
-      });
+      setLoading(false);
+      axios
+        .get(apiPath)
+        .then((resp) => {
+          setNext(resp.data.next);
+          for (let i = 0; i < resp.data.results.length; i++) {
+            axios.get(resp.data.results[i].url).then((result) => {
+              setPokemons((prevArray) => [...prevArray, result.data]);
+            });
+          }
+        })
+        .finally((_) => {
+          setTimeout(() => {
+            setLoading(true);
+          }, 1000);
+        });
     };
 
     getPokemons();
@@ -41,9 +50,13 @@ export default function Gallery() {
       </div>
       <br />
       <div className="text-center">
-        <span className="btn-link" onClick={getMore}>
-          More...
-        </span>
+        {pokemons.length > 0 ? (
+          <span className="btn-link" onClick={getMore}>
+            More...
+          </span>
+        ) : (
+          <></>
+        )}
       </div>
       <br />
     </div>
