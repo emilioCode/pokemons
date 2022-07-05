@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Card from "../components/Card";
 
 export default function Gallery(props) {
-  const { loading, setLoading } = props;
+  const { setLoading } = props;
   const [pokemons, setPokemons] = useState([]);
   const [apiPath, setApiPath] = useState(
     "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
@@ -51,7 +51,7 @@ export default function Gallery(props) {
       <br />
       <div className="text-center">
         {pokemons.length > 0 ? (
-          <span className="btn-link" onClick={getMore}>
+          <span className="btn btn-outline-danger" onClick={getMore}>
             More...
           </span>
         ) : (
