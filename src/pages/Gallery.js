@@ -37,6 +37,10 @@ export default function Gallery(props) {
     getPokemons();
   }, [apiPath]);
 
+  const showModal = (value) => {
+    console.log(value);
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -45,6 +49,7 @@ export default function Gallery(props) {
             title={"No." + pkm.id + " - " + pkm.name}
             image={pkm.sprites.front_default}
             key={index}
+            onClick={() => showModal(pkm)}
           />
         ))}
       </div>
