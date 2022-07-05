@@ -1,4 +1,5 @@
 import "./styles/Loader.css";
+
 export default function Loader(props) {
   const { hide } = props;
   return (

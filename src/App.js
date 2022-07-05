@@ -23,7 +23,7 @@ function App() {
       {
         name: "Pokemons",
         path: "/pokemons",
-        component: <Gallery setLoading={setLoading} />,
+        component: <Gallery setLoading={setLoading} $={$} />,
       },
       { name: "About", path: "/about", component: <About /> },
     ],

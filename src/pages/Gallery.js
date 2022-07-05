@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Card from "../components/Card";
+import Modal from "../components/Modal";
 
 export default function Gallery(props) {
-  const { setLoading } = props;
+  const { setLoading, $ } = props;
   const [pokemons, setPokemons] = useState([]);
   const [apiPath, setApiPath] = useState(
     "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
   );
   const [next, setNext] = useState("");
+  const [pokemon, setPokemon] = useState(null);
 
   const getMore = () => {
     setApiPath(next);
@@ -38,11 +40,15 @@ export default function Gallery(props) {
   }, [apiPath]);
 
   const showModal = (value) => {
-    console.log(value);
+    // debugger;
+    // console.log(value);
+    setPokemon(value);
+    $("#myModal").modal("show");
   };
 
   return (
     <div className="container">
+      <Modal id={"myModal"} data={pokemon} />
       <div className="row">
         {pokemons.map((pkm, index) => (
           <Card
