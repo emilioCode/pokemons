@@ -8,7 +8,7 @@ const Modal = (props) => {
   const image = pokemon ? pokemon.sprites.front_default : null;
   return (
     <div
-      className="modal modal-bg"
+      className="modal fade"
       id={id}
       tabIndex="-1"
       role="dialog"
