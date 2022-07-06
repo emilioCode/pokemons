@@ -40,8 +40,6 @@ export default function Gallery(props) {
   }, [apiPath]);
 
   const showModal = (value) => {
-    // debugger;
-    // console.log(value);
     setPokemon(value);
     $("#myModal").modal("show");
   };
@@ -50,14 +48,18 @@ export default function Gallery(props) {
     <div className="container">
       <Modal id={"myModal"} data={pokemon} />
       <div className="row">
-        {pokemons.map((pkm, index) => (
-          <Card
-            title={"No." + pkm.id + " - " + pkm.name}
-            image={pkm.sprites.front_default}
-            key={index}
-            onClick={() => showModal(pkm)}
-          />
-        ))}
+        {pokemons
+          .sort((pk1, pk2) => {
+            return pk1.id - pk2.id;
+          })
+          .map((pkm, index) => (
+            <Card
+              title={"No." + pkm.id + " - " + pkm.name}
+              image={pkm.sprites.front_default}
+              key={index}
+              onClick={() => showModal(pkm)}
+            />
+          ))}
       </div>
       <br />
       <div className="text-center">
